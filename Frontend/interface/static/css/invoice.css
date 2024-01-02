@@ -1,5 +1,3 @@
-
-
 .wrapper {  
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* Three equal columns for a balanced layout */

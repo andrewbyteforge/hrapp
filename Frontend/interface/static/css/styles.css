@@ -61,11 +61,12 @@
 .employee-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end; /* This aligns the cards to the right */
-    gap: 20px; /* This adds space between the cards */
-    flex-wrap: wrap; /* This allows the cards to wrap to the next line if the container is not wide enough */
-    padding-top: 250px;
-  }
+    justify-content: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    /* Removed or reduced padding-top */
+}
   .employee-card {
     width: 18rem; /* Moved the width here for cleaner HTML */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Drop shadow */
@@ -73,6 +74,10 @@
   .employee-schools table {
     width: 100%;
     border-collapse: collapse;
+}
+
+.employees-heading{
+    padding-left: 60px;
 }
 
 .employee-schools th, .employee-schools td {
