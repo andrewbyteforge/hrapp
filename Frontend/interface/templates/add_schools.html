@@ -6,8 +6,9 @@
 
 
     <div class="container mt-5">
+        <br>
         <h2><b>Add School</b></h2>
-        <form method="post" class="mt-4">
+        <form method="post" enctype="multipart/form-data" style="background-color: #f2f2f2; border-radius: 10px; padding: 60px;">
             {% csrf_token %}
     
             <div class="mb-3">
@@ -29,8 +30,9 @@
                 <label for="email" class="form-label">Email:</label>
                 <input type="text" class="form-control" id="email" name="email" value="{{ school.email }}" required>
             </div>
-    
+            
             <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{% url 'schools' %}" class="btn btn-warning shadow-lg" style="margin-right: 10px;">Back</a>
         </form>
     </div>
 
