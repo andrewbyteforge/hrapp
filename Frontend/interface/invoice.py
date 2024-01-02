@@ -8,7 +8,7 @@ from django.http import HttpResponseServerError
 import logging
 
 logger = logging.getLogger('logging_app')
-sss
+
 class FinanceView(View):
     """
     View for handling invoice creation and processing.
