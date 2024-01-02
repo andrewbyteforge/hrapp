@@ -1,4 +1,4 @@
-Project:<h1><b>HR APP</b></h1>Under development
+Project:<h1><b>HR APP</b></h1>
 
 
 <b>What is this ? </b>
@@ -104,7 +104,7 @@ See graph in stats
 <hr>
 <br>
 
-
+<h4>Project under development</h4>
 
 
 
