@@ -15,7 +15,7 @@ class InvoiceForm(forms.Form):
     due_date = forms.DateField(widget=forms.TextInput(attrs={'class': 'datetimepicker'}), required=False, input_formats=['%d/%m/%Y'])
 
     # Choice field for selecting a description of the work done.
-    work_description = forms.ChoiceField(choices=[(0, ''), ('Half day of Education Welfare Officer support.', 'Half day of Education Welfare Officer support.'), ('Full day of Education Welfare Officer support. ', 'Full day of Education Welfare Officer support. '), ('Full day of psa support.  ', 'Full day of psa support.  '), ('other', 'other')], required=False)
+    work_description = forms.ChoiceField(choices=[(0, ''), ('Half day of  support.', 'Half day of  support.'), ('Full day of support. ', 'Full day of support. '), ('Full day of admin support.  ', 'Full day of admin support.  '), ('other', 'other')], required=False)
 
     # Choice field for selecting the unit price.
     unit_price = forms.ChoiceField(choices=[('', ''), ('185.00', '185.00'), ('200.00', '200.00'), ('350.00', '350.00')])
