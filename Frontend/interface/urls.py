@@ -12,6 +12,7 @@ urlpatterns = [
     
     # Home Page
     path('', views.landingpage, name='landingpage'),
+    path('data/', views.data, name='data'),
 
     # INVIOCE
     path('finance/', invoice.FinanceView.as_view(), name='finance'),
@@ -55,6 +56,8 @@ urlpatterns = [
     path('analytics_data/', views.analytics_data, name='analytics_data'),
     path('stats/', views.stats, name='stats'),
     path('fetch_school_data/', views.fetch_school_data, name='fetch_school_data'),
+    path('client_analytics/', views.client_analytics, name='client_analytics'),
+    path('employee_analytics/', views.employee_analytics, name='employee_analytics'),
 ]
 
 

@@ -277,11 +277,18 @@ def delete_all_schools(request):
 
 
 
+def client_analytics(request):
+    
+    return render(request, 'client_analytics.html')
 
 
+def employee_analytics(request):
+    
+    return render(request, 'employee_analytics.html')
 
-
-
+def data(request):
+    
+    return render(request, 'data.html')
 
 
 

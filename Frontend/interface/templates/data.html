@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><br><br>
+<div class="container text-center">    
+    <h1>HR Management App</h1>        
+</div>
+<br>
+<hr>
+<br><br><br>
+<div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <a href="{% url 'analytics_data' %}">
+                    <div class="square">Employee Stats</div>
+                </a>                
+            </div>
+
+            <div class="col text-center">
+                <a href="{% url 'stats' %}">
+                    <div class="square">Client stats</div>
+                </a>
+            </div>            
+        </div>
+        <br>
+        <br>
+        <center>
+            <a href="{% url 'landingpage' %}" class="btn btn-warning shadow-lg" style="margin-right: 10px;">Back</a>
+        </center>
+</div>
+<br><br><br>
+{% endblock %}
