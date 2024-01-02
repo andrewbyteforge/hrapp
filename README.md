@@ -89,15 +89,20 @@ See graph in stats
 ![Capture4](https://github.com/andrewbyteforge/hrapp/assets/155364089/7397d35a-6607-48d7-bb8b-0179cb21423b)
 
 
+<br>
+<hr>
+<br>
+
+
+
+![Capture5](https://github.com/andrewbyteforge/hrapp/assets/155364089/28d4cb46-7fca-4210-b7e4-bf32b07100bd)
 
 
 
 
-
-
-
-
-
+<br>
+<hr>
+<br>
 
 
 
