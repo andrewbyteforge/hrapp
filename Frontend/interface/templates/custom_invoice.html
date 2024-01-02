@@ -1,0 +1,71 @@
+{% extends 'base.html' %}  
+
+{% block content %}
+
+
+<div class="container">
+    <h1 class="text-center">Custom Invoice</h1> 
+    <form method="post" action="{% url 'custom_invoice_preview' %}">
+        {% csrf_token %}
+        <!-- Custom Field for School -->
+        <div class="form-group">
+            <label for="customSchool">School</label>
+            <input type="text" class="form-control" id="customSchool" name="customSchool" placeholder="Enter school name">
+        </div>
+
+        <!-- Custom Field for Units Worked -->
+        <div class="form-group">
+            <label for="customUnitsWorked">Units Worked</label>
+            <input type="text" class="form-control" id="customUnitsWorked" name="customUnitsWorked" placeholder="Enter units worked">
+        </div>
+
+        <!-- Custom Field for Invoice Number -->
+        <div class="form-group">
+            <label for="customInvoiceNumber">InvoiceNumber</label>
+            <input type="text" class="form-control" id="customInvoiceNumber" name="customInvoiceNumber" placeholder="Custom Invoice Reference Here">
+        </div>       
+
+
+        <!-- Custom Field for Date of Invoice -->
+        <div class="form-group">
+            <label for="customDateOfInvoice">Date of Invoice</label>
+            <input type="text" class="form-control" id="customDateOfInvoice" name="customDateOfInvoice" placeholder="Enter date of invoice dd/mm/yy">
+        </div>
+
+        <!-- Custom Field for Due Date -->
+        <div class="form-group">
+            <label for="customDueDate">Due Date</label>
+            <input type="text" class="form-control" id="customDueDate" name="customDueDate" placeholder="Enter due date dd/mm/yy">
+        </div>
+
+        <!-- Custom Field for Work Description -->
+        <div class="form-group">
+            <label for="customWorkDescription">Work Description</label>
+            <textarea class="form-control" id="customWorkDescription" name="customWorkDescription" rows="3" placeholder="Enter type of work "></textarea>
+        </div>
+
+        <!-- Custom Field for Month Work Took Place -->
+        <div class="form-group">
+            <label for="customMonthWork">Month Work Took Place</label>
+            <input type="text" class="form-control" id="customMonthWork" name="customMonthWork" placeholder="Enter month work took place i.e. January, February.....">
+        </div>
+
+        <!-- Custom Field for Unit Price -->
+        <div class="form-group">
+            <label for="customQuantity">Unit Quantity</label>
+            <input type="text" class="form-control" id="customQuantity" name="customQuantity" placeholder="Enter quantity">
+        </div>
+
+        <!-- Custom Field for Unit Price -->
+        <div class="form-group">
+            <label for="customUnitPrice">Unit Price</label>
+            <input type="text" class="form-control" id="customUnitPrice" name="customUnitPrice" placeholder="Enter unit price i.e. 150.00">
+        </div>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Preview Custom Invoice</button>
+    </form>
+</div>
+{% endblock %}
+
+
+

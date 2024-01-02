@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2><b>Email School</b></h2>
+    <form method="post" class="mt-4" action="{% url 'sending_email' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- School selection dropdown -->
+        <div class="mb-3">
+            <label for="schoolSelect" class="form-label">Select School:</label>
+            <select class="form-select" id="schoolSelect" name="school" onchange="updateEmail()">
+                <option value="">Select a school</option>
+                {% for school in school_data %}
+                    <option value="{{ school.id }}" data-email="{{ school.email }}">{{ school.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Manual email entry checkbox and input field -->
+        <div class="mb-3">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="manualEmailEntry" onchange="toggleEmailInput()">
+                <label class="form-check-label" for="manualEmailEntry">Manual Email Entry</label>
+            </div>
+            <label for="schoolEmail" class="form-label">Email to:</label>
+            <input type="text" class="form-control" id="schoolEmail" name="schoolEmail" readonly>
+        </div>
+
+        <!-- Email subject -->
+        <div class="mb-3">
+            <label for="emailSubject" class="form-label">Email Subject:</label>            
+            <input type="text" class="form-control" id="emailSubject" name="emailSubject" value="Fake Invoice" readonly >
+        </div>        
+
+        <!-- Predefined message selection dropdown -->
+        <div class="mb-3">
+            <label for="messageSelect" class="form-label">Select Message:</label>
+            <select class="form-select" id="messageSelect" onchange="updateMessageBody()">
+                <option value="">Select a message</option>
+                {% for message in predefined_messages %}
+                    <option value="{{ message.body }}">{{ message.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <!-- Email body textarea -->
+        <div class="mb-3">
+            <label for="emailBody" class="form-label">Message Body:</label>
+            <textarea class="form-control" id="emailBody" name="emailBody" rows="4"></textarea>
+        </div>
+
+        <!-- PDF attachment input -->
+        <div class="mb-3">
+            <label for="pdfAttachment" class="form-label">Attach PDF:</label>
+            <input type="file" class="form-control" id="pdfAttachment" name="pdfAttachment" accept=".pdf">
+        </div>
+        
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary lg-shadow">Send Email</button>
+        <a href="{% url 'landingpage' %}" class="btn btn-warning shadow-lg" >Back</a>
+    
+    
+    
+    </form>
+</div>
+
+
+<script>
+    function updateEmail() {
+        var emailInput = document.getElementById("schoolEmail");
+        var manualEntryChecked = document.getElementById("manualEmailEntry").checked;
+        if (!manualEntryChecked) {
+            var selectedSchool = document.getElementById("schoolSelect");
+            var email = selectedSchool.options[selectedSchool.selectedIndex].getAttribute('data-email');
+            emailInput.value = email ? email : '';
+        }
+        emailInput.readOnly = !manualEntryChecked;  // Toggle readonly based on checkbox
+    }
+
+    function toggleEmailInput() {
+        var emailInput = document.getElementById("schoolEmail");
+        var manualEntryChecked = document.getElementById("manualEmailEntry").checked;
+        emailInput.readOnly = !manualEntryChecked;
+        if (!manualEntryChecked) {
+            updateEmail(); // Update email based on school selection if manual entry is not checked
+        } else {
+            emailInput.value = '';  // Clear the field for manual entry
+        }
+    }
+
+    function updateMessageBody() {
+        var selectedMessage = document.getElementById("messageSelect").value;
+        document.getElementById("emailBody").value = selectedMessage;
+    }
+</script>
+
+{% endblock %}

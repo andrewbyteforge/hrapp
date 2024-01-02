@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br><br><br>
+    <div class="container text-center">    
+        <h1>HR</h1>
+        <h5>Management application</h5>    
+    </div>
+    <br>
+   <hr>
+   <br><br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <a href="{% url 'finance' %}">
+                    <div class="square">Regular Invoice</div>
+                </a>                
+            </div>
+            <div class="col text-center">
+              <a href="{% url 'custom_invoice' %}">
+                <div class="square">Custom Invoice</div>
+              </a>                 
+            </div>          
+        </div>
+    </div>  
+    <br><br><br>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="scrolling-text">
+              <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> 
+              <span>Item 1</span> <span>Item 2</span> <span>Item 3</span>
+              <span>Item 1</span> 
+              <!-- More spans for scrolling text -->
+            </div>
+          </div>
+          <!-- Additional carousel items as needed -->
+        </div>
+      </div>
+
+    
+    
+    
+{% endblock %}

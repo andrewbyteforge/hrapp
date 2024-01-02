@@ -1,0 +1,110 @@
+{% extends 'base.html' %}  
+
+{% block content %}
+<div class="container">
+    <br>
+    <br>
+    <h1 class="col-12">Invoice</h1> 
+    <br>
+    <br>      
+    <form method="post" action="{% url 'test' %}" class="row g-3">
+        {% csrf_token %}        
+        {{ form.errors }}
+        <!-- Field for School -->
+        <div class="col-md-6">
+            <label for="id_select_school" class="form-label">Select School</label>
+        </div>
+        <div class="col-md-6">
+            {{ form.select_school }}
+        </div>
+
+        <!-- Field for Units Worked -->
+        <div class="col-md-6">
+            <label for="id_units_worked" class="form-label">Units Worked</label>
+        </div>
+        <div class="col-md-6">
+            {{ form.units_worked }}
+        </div>      
+
+        <!-- Date Of Invoice -->
+        <div class="col-md-6">
+            <label for="id_date_of_invoice" class="form-label">Date of Invoice</label>
+        </div>
+        <div class="col-md-6">
+            {{ form.date_of_invoice }}
+        </div>
+
+        <!-- Date Of Payment -->
+        <div class="col-md-6">
+            <label for="id_due_date" class="form-label">Due date</label>
+        </div>
+        <div class="col-md-6">
+            {{ form.due_date }}
+        </div>
+
+        <!-- work description -->
+        <div class="col-md-6">
+            <label for="id_select_school" class="form-label">Work Description</label>
+        </div>
+        <div class="col-md-6">
+            {{ form.work_description }}
+        </div>
+
+        <!-- Month Work Took Place -->
+        <div class="col-md-6">
+            <label for="id_month_work_took_place" class="form-label">Month Work Took Place</label>
+        </div>
+        <div class="col-md-6">
+            {{ form.month_work_took_place }} 
+        </div>
+
+        <!-- Unit Price -->
+        <div class="col-md-6">
+            <label for="id_unit_price" class="form-label">Unit Price</label>
+        </div>
+        <div class="col-md-6">
+            {{ form.unit_price }}
+        </div>
+        <br>
+        <br>
+                
+        <!-- Submit Button -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-warning btn-shadow">Preview Invoice</button>
+        </div>       
+    </form>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#id_date_of_invoice').datetimepicker({
+            format: 'd/m/Y',
+            timepicker: false,
+            onSelectDate: function(ct, $i) {
+                var paymentDate = new Date(ct.getTime() + (30 * 24 * 60 * 60 * 1000)); // Add 30 days
+                jQuery('#id_due_date').val(paymentDate.toISOString().split('T')[0]);
+            }
+        });
+
+        jQuery('#id_due_date').datetimepicker({
+            format: 'd/m/Y',
+            timepicker: false
+        });
+    });
+
+</script> 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const schoolAddressMap = ({ school_address_map, safe });
+        const schoolDropdown = document.getElementById('id_select_school');
+        const addressDisplay = document.getElementById('address-display');
+    
+        schoolDropdown.addEventListener('change', function() {
+            const selectedSchoolId = this.value;
+            const address = schoolAddressMap[selectedSchoolId];
+            addressDisplay.value = address;
+        });
+    });
+</script>
+{% endblock %}

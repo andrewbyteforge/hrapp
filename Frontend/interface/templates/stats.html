@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <h2>Select a School to analyse</h2>
+    <div class="row my-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="schoolSelection">Schools:</label>
+                <select class="form-select" id="schoolSelection">
+                    <option value="" selected>Choose...</option>
+                    {% for school in schools %}
+                        <option value="{{ school.id }}">{{ school.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<canvas id="schoolEarningsChart" width="800" height="400"></canvas>
+
+
+
+<!-- Element to display total earnings -->
+<div id="totalEarnings" class="mt-3">
+    <!-- Content will be filled dynamically by JavaScript -->
+</div>
+<!-- Element to display total VAT -->
+<div id="totalVAT" class="mt-3">
+    <!-- Content will also be filled dynamically by JavaScript -->
+</div>
+<!-- Element to display total ed5 earnings -->
+<div id="totalEd5Earnings" class="mt-3">
+
+
+
+<script>
+    // Placeholder for Chart.js instance
+    let schoolEarningsChart;
+
+    // Function to update the graph for the selected school
+    function updateSchoolGraph(schoolId) {
+        if (!schoolId) {
+            // Handle case when no school is selected
+            return;
+        }
+
+        // AJAX request to fetch data for the selected school
+        fetch(`/fetch_school_data/?schoolId=${schoolId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Use 'data' to update the chart
+                updateChartWithData(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    function updateChartWithData(data) {
+        console.log("Total Ed5 earnings received:", data.total_ed5_earned, "Type:", typeof data.total_ed5_earned);
+        console.log("Total earnings received:", data.total_year_earnings, "Type:", typeof data.total_year_earnings);
+        const ctx = document.getElementById('schoolEarningsChart').getContext('2d');
+        if (schoolEarningsChart) {
+            schoolEarningsChart.destroy(); // Destroy the previous chart instance if exists
+        }
+        schoolEarningsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.labels, // Use data from the server
+                datasets: data.datasets // Use data from the server
+            },
+            options: {
+                // ... similar options as in analytics_data.html ...
+            }
+        });
+    
+        // Update display based on data availability
+        const totalEarnings = parseFloat(data.total_year_earnings);
+        const totalEarningsText = totalEarnings > 0 ?
+            'Total Earnings for the Year: GBP ' + totalEarnings.toFixed(2) :
+            'No earnings data available for this school';
+        document.getElementById('totalEarnings').innerText = totalEarningsText;
+
+        // Calculate and display VAT (20% of total earnings)
+        const vatAmount = totalEarnings * 0.20;
+        document.getElementById('totalVAT').innerText = 'Total VAT for the Year: GBP ' + vatAmount.toFixed(2);
+
+        const totalEd5Earnings = parseFloat(data.total_ed5_earned);
+        const totalEd5EarningsText = totalEd5Earnings > 0 ?
+        'Total Ed5 Earnings for the Year: GBP ' + totalEd5Earnings.toFixed(2) :
+        'No Ed5 earnings data available for this school';
+        document.getElementById('totalEd5Earnings').innerText = totalEd5EarningsText;
+}
+    
+    // Event listener for school selection change
+    document.getElementById('schoolSelection').addEventListener('change', function() {
+        updateSchoolGraph(this.value);
+    });
+    
+    // Initialize the graph with no data on page load
+    updateSchoolGraph(null);    
+</script>
+{% endblock %}

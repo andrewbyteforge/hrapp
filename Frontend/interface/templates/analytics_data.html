@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br><br>
+
+<form action="" method="get" class="mb-3">
+    <select name="employee_id" class="form-select" onchange="this.form.submit()">
+        <option value="">Select an Employee</option>
+        {% for employee in employees %}
+            <option value="{{ employee.id }}" {% if employee.id == selected_employee_id %}selected{% endif %}>
+                {{ employee.name }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
+
+
+
+<!-- Chart canvas -->
+<canvas id="earningsChart" width="800" height="400"></canvas>
+
+<script>
+    const months = {{ months|safe }};
+    const monthlyEarnings = {{ monthly_earnings|safe }};
+    const monthlyEd5Earnings = {{ monthly_ed5_earnings|safe }};
+    const monthlyEmployEarnings = {{ monthly_employ_earnings|safe }};
+
+    const ctx = document.getElementById('earningsChart').getContext('2d');
+    const earningsChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: [
+                {
+                    label: 'Total Earnings',
+                    data: monthlyEarnings,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                },
+                {
+                    label: 'Ed5 Earned',
+                    data: monthlyEd5Earnings,
+                    borderColor: 'rgb(128, 0, 128)',
+                    tension: 0.1
+                },
+                {
+                    label: 'Employ Earned',
+                    data: monthlyEmployEarnings,
+                    borderColor: 'rgb(0, 0, 255)',
+                    tension: 0.1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'GBP',
+                        color: '#666',
+                        font: {
+                            weight: 'bold',
+                            size: 16
+                        }
+                    },
+                    ticks: {
+                        stepSize: 200,
+                        callback: function(value) {
+                            return value.toFixed(2);
+                        }
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month',
+                        color: '#666',
+                        font: {
+                            weight: 'bold',
+                            size: 16
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<!-- Drop down list for stats -->
+<br>
+<div class="achieved" style="padding-left: 14px;">    
+    <!-- Default text here -->
+    <div id="selectedEarningsInfo">Select an option to view stats totals:</div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4">
+            <select id="earningsSelection" class="form-select" onchange="updateEarningsInfo()">
+                <option value=""></option>
+                <option value="total_earnings">Total Earnings</option>
+                <option value="ed5_earned">Ed5 Earned</option>
+                <option value="employ_earned">Employee Earned</option>                
+            </select>
+        </div>
+    </div>
+</div>
+
+
+<!-- Place to display the output with a clear background -->
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div id="selectedEarningsInfo">
+            <!-- Clear background -->
+        </div> 
+    </div>
+</div>
+
+
+<script>
+    // Function to update earnings info based on selection
+    function updateEarningsInfo() {
+        var selection = document.getElementById('earningsSelection').value;
+        var infoText = '';
+        switch (selection) {
+            case 'total_earnings':
+                infoText = 'Total Earnings: GBP ' + {{ total_earnings|floatformat:2 }};
+                break;
+            case 'ed5_earned':
+                infoText = 'Ed5 Earned: GBP ' + {{ total_ed5_earned|floatformat:2 }};
+                break;
+            case 'employ_earned':
+                infoText = 'Employee Earned: GBP ' + {{ total_employ_earned|floatformat:2 }};
+                break;
+        }
+        document.getElementById('selectedEarningsInfo').innerText = infoText;
+    }
+</script>
+{% endblock %}

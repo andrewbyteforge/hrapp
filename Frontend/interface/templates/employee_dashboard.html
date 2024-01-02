@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+<!-- Profile Card -->
+<div class="col-md-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <p class="card-text">Position: {{ employee.position }}</p>
+            <!-- Other details -->
+        </div>
+    </div>
+</div>
+
+<div class="col-md-8">
+    <!-- Details Card -->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Welcome to {{ employee.name }}s dashboard</h5>
+            <!-- Task List and Statistics, etc. Dynamically generated -->
+        </div>
+    </div>
+</div>
+    
+<br><br>
+<form method="post" action="{% url 'employee_dashboard' employee.id %}">
+    {% csrf_token %}
+    <div class="employee-schools">
+        <h3> {{ employee.name }} schools:</h3>
+        <br>
+        <table class="table">
+            <thead>                     
+                <tr>
+                    <!-- Table Headings -->
+                    <th>School Name</th>
+                    <th>Units Worked</th>
+                    <th>Unit Price</th>
+                    <th>Total Earned</th>
+                    <th>Employ Earned</th>
+                    <th>Fake Business Earned</th>
+                    <th>Month / Year</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for school in schools %}
+                <tr id="row_{{ school.id }}"> <!-- Add row ID here -->
+                    <td style="text-align: center; vertical-align: middle;">{{ school.name }}</td>
+                    <td>
+                        <!-- Dropdown for Units Worked -->
+                        <select id="units_worked_{{ school.id }}" class="form-control" style="text-align: center; vertical-align: middle;">
+                            {% for unit in units_range %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <!-- Dropdown for Unit Price -->
+                        <select id="unit_price_{{ school.id }}" class="form-control" style="text-align: center; vertical-align: middle;">
+                            <option value="185.00">185.00</option>
+                            <option value="200.00">200.00</option>
+                            <option value="350.00">350.00</option>
+                        </select>
+                    </td>
+
+                        <!-- Total Earned -->
+                        <td id="total_earned_{{ school.id }}" style="text-align: center; vertical-align: middle;">{{ school.total_earned }}</td>
+                    
+                        <!-- Employ Earned -->
+                        <td id="employ_earned_{{ school.id }}" style="text-align: center; vertical-align: middle;">{{ school.employ_earned }}</td>
+                        
+                        <td id="ed5_earned_{{ school.id }}" style="text-align: center; vertical-align: middle;">{{ school.ed5_earned }}</td>
+                                                    
+                        <!-- Select Month -->
+                        <td>
+                            <select id="month_year_{{ school.id }}" class="form-control">
+                                <option value="" disabled selected>Select Month</option> 
+                                {% for month in MONTH_CHOICES %}
+                                <option value="{{ month.0 }}">{{ month.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        
+                        
+
+                        <!-- Action Buttons -->
+                        <td style="text-align: center; vertical-align: middle;">
+                            <button type="button" class="btn btn-primary" onclick="calculateEarnings({{ school.id }})">Calculate</button>                             
+                            <button type="button" class="btn btn-danger" onclick="removeSchool({{ school.id }})">Remove</button>
+                            <button type="button" class="btn btn-success" onclick="saveEarnings({{ school.id }})">Save</button>
+                        </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No schools associated.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="employee-schools">
+            <h3>{{ employee.name }} schools:</h3>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSchoolModal">Add School</button>
+            <a href="{% url 'landingpage' %}" class="btn btn-warning shadow-lg">Back</a>
+        
+            <!-- Add School Modal -->
+            <div class="modal fade" id="addSchoolModal" tabindex="-1" aria-labelledby="addSchoolModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addSchoolModalLabel">Add a School</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <select id="schoolToAdd" class="form-select">
+                                <option value="">Select a School</option>
+                                {% for school in all_schools %}
+                                <option value="{{ school.id }}">{{ school.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="addSchoolToDashboard()">Add School</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <script>            
+        function addSchoolToDashboard() {
+            var schoolId = document.getElementById('schoolToAdd').value;
+            var employeeId = {{ employee.id }};
+            if (!schoolId) {
+                alert('Please select a school.');
+                return;
+            }
+        
+            fetch(`/employee/${employeeId}/add-school/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ school_id: schoolId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // School added successfully message
+                    alert('School added successfully.');
+        
+                    // Refresh the page
+                    window.location.reload();
+                } else {
+                    alert('Error adding school.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error adding school.');
+            });
+        }            
+
+        function calculateEarnings(schoolId) {
+            var unitsWorked = document.getElementById('units_worked_' + schoolId).value;
+            var unitPrice = document.getElementById('unit_price_' + schoolId).value;
+            var monthYear = document.getElementById('month_year_' + schoolId).value;
+        
+            // AJAX request to server
+            fetch('{% url "calculate_earnings" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    school_id: schoolId,
+                    units_worked: unitsWorked,
+                    unit_price: unitPrice                        
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('total_earned_' + schoolId).innerText = parseFloat(data.total_earned).toFixed(2);
+                document.getElementById('employ_earned_' + schoolId).innerText = parseFloat(data.employ_earned).toFixed(2);
+                document.getElementById('ed5_earned_' + schoolId).innerText = parseFloat(data.ed5_earned).toFixed(2);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function removeSchool(schoolId) {
+            if (confirm('Are you sure you want to remove this school from the dashboard?')) {
+                fetch('{% url "remove_school_from_employee" employee.id %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({ school_id: schoolId })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Remove the row from the table
+                        document.getElementById('row_' + schoolId).remove();
+                    } else {
+                        alert('Error: Unable to remove the school from the dashboard.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        } 
+        
+        function saveEarnings(schoolId) {
+            var unitsWorked = document.getElementById('units_worked_' + schoolId).value;
+            var unitPrice = document.getElementById('unit_price_' + schoolId).value;
+            var monthYear = document.getElementById('month_year_' + schoolId).value;
+            var employeeId = {{ employee.id }};  // Get employee ID from the Django template
+        
+            fetch('{% url "save_earnings" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    school_id: schoolId,
+                    units_worked: unitsWorked,
+                    unit_price: unitPrice,
+                    month_year: monthYear,
+                    employee_id: employeeId  // Include employee ID in the request
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Earnings saved successfully.');
+                } else {
+                    alert('Error: Unable to save earnings.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }                       
+    </script>
+</form>
+{% endblock %}

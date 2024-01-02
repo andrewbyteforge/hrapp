@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrapper">
+    
+    <!-- Education 5 Details -->
+    <div class="div1">        
+        <h1 class="ed5-text-h1">Fake <b><span class="pink-text">Business</span></b></h1>
+        <h6 class="ed5-text-h6">
+            Fake address one<br>
+            Fake address one<br>
+            fakeemail@fakeaddress.co.uk<br>
+            VAT Registration Number: 1234567<br>
+        </h6>  
+    </div>
+
+    <!-- VAT Invoice Title -->
+    <div class="div2">
+        <h1 class="ed5-text-h1"><b>VAT Invoice</b></h1>      
+    </div>
+    
+
+    <!-- Sending VAT Invoice to: -->
+    <div class="div3">
+        <h6><b>Invoice to:</b></h6>
+        <div class="school-details">            
+            <h6 class="ed5-text-h6">{{ selected_school.name }}</h6>
+            <b>Address:</b> 
+            <h6 class="ed5-text-h6">{{ selected_school.address }}</h6>
+            <b>Postcode:</b> 
+            <h6 class="ed5-text-h6">{{ selected_school.postcode }}</h6>
+        </div>            
+    </div>
+    
+    
+
+    <!-- Invoice No -->
+    <div class="div4">
+        <div class="invoice-details">
+            <h6><b>Invoice number:</b> {{ invoiceNumber }}</h6>
+            <p><b>Date:</b> {{ form_data.date_of_invoice }}</p>
+            <p><b>Due date:</b> {{ form_data.due_date }}</p>
+        </div>
+    </div>
+    
+
+    
+    <div class="banner-heading-1">
+        
+
+    </div>
+
+    <!-- description -->
+    <div class="div5">
+        <h6 class="description-title"><b>Description:</b></h6> 
+        <h6>{{ form_data.work_description }}</h6>       
+        <h6>Work took place in {{ form_data.month_work_took_place }}</h6>          
+    </div>
+
+    <!-- Quantity -->
+    <div class="quantity">
+        <b>Quantity:</b>
+        <h6 id="quantity-value">{{ form_data.units_worked }}</h6>
+    </div>
+
+    <!-- Unit Price -->
+    <div class="unit-price">
+        <b>Unit Price:</b>
+        <h6 id="unit-price-value">{{ form_data.unit_price|floatformat:"2" }}</h6>
+    </div>
+
+    <!-- Amount (Calculated Field) -->
+    <div class="amount">
+        <b>Amount:</b>
+        <h6 id="calculated-amount"></h6>
+    </div>
+
+    <!-- costings subtitles -->
+    <div class="subtotal-title">
+        <div >Subtotal:</div> 
+        <div >VAT@20%:</div>
+        <div class="total-bold" ><b>Total:</b></div>          
+    </div>
+
+    <!-- costings -->
+    <div class="calculations">
+        <!-- Subtotal Display -->
+        <div class="subtotal">            
+            <h6 id="subtotal-value"></h6>
+        </div>  
+        <!-- VAT Display -->
+        <div class="VAT2">
+            <h6 id="vat-value"></h6>
+        </div>
+        <!-- Total Display -->
+        <div class="total">
+            <h6 id="total-value"><b></b></h6>
+        </div>          
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="banner-heading-2">     
+
+    </div>
+
+    <!-- Payment Details -->
+    <div class="payment-details">
+        <h6><b>Payment Details:</b></h6>      
+        <ul class="instruction">
+            <li class="item">Payment should be made within 30 days of the date of the invoice.</li>
+            <li class="item">Cheques should be made payable to Fake Business Ltd or payment made directly</li>
+            <span class="item">into the bank.</span>
+            <li class="item">Fake Business Ltd. My Money, Sort Code 01-02-03, Account Number 012345678</li>           
+        </ul>
+    </div>
+    
+    <!-- Footer -->
+    <div class="bottom-of-page">
+        <div class="item">
+            Fake Business Ltd, registered address, Fake House, Fake Business Park, Fake, FAKE, FAKE POSTCODE.
+            Registered in England and Wales.
+            Company Registration Number: 01234567
+            VAT Registration Number: 012345678
+        </div>
+    </div>
+</div>
+
+<!-- Print Button -->
+<div class="print-button-container">
+    <button onclick="printPage()" class="btn btn-secondary btn-shadow">Print</button>
+</div>
+
+<script>
+    // Your existing JavaScript functions   
+    // Print Page Function
+    function printPage() {
+        window.print();
+    }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function calculateTotalAmount() {
+            var quantity = parseFloat(document.getElementById('quantity-value').innerText) || 0;
+            var unitPrice = parseFloat(document.getElementById('unit-price-value').innerText) || 0;
+            var totalAmount = quantity * unitPrice;
+            document.getElementById('calculated-amount').innerText = totalAmount.toFixed(2);
+            
+            // Calculate Subtotal (assuming it's just the total amount for now)
+            var subtotal = totalAmount; // If you have multiple amounts, sum them here.
+            document.getElementById('subtotal-value').innerText = subtotal.toFixed(2);
+
+            // Calculate VAT (20% of subtotal)
+            var vat = subtotal * 0.20;
+            document.getElementById('vat-value').innerText = vat.toFixed(2);
+
+            // Calculate Grand Total (subtotal + VAT)
+            var grandTotal = subtotal + vat;
+            document.getElementById('total-value').innerText = grandTotal.toFixed(2);
+        }
+
+        calculateTotalAmount();
+    });
+</script>
+{% endblock %}

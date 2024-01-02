@@ -1,0 +1,320 @@
+
+
+.wrapper {  
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* Three equal columns for a balanced layout */
+    grid-auto-rows: minmax(50px);
+    gap: 5px; /* Space between grid items */
+    /* width: 210mm; /* Width of A4 paper */
+    /* min-height: 297mm; Minimum height of A4 paper */ 
+    margin: auto; /* Center the container */
+    padding: 20mm; /* Padding inside the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow for visibility */
+    background: white; /* Background color */
+    box-sizing: border-box;    
+    
+}
+
+@media print {
+    /* Hide the print button */
+    .print-button-container {
+        display: none;
+    }
+
+    /* Hide the top menu */
+    /* Assuming the top menu has a class name, replace 'top-menu-class' with the actual class name */
+    .navbar {
+        display: none;
+    }
+
+    .banner-heading-1, .banner-heading-2 {
+        background-color: #f0f0f0; /* Gives banners a background color */
+        height: 10px; /* Adjust height as needed for visibility */
+    }
+
+    /* Additional print-specific styles */
+    /* ... other styles for print view ... */
+}
+
+
+/* ******************************************************************** */
+/* Ed5 company details */
+/* ******************************************************************** */
+.div1{    
+    grid-column: 1 / span 3; /* Place div in first column and occupy three columns */
+    grid-row: 1;
+    margin: 0;
+    padding: 0;      
+}
+
+.pink-text {
+    color: rgb(236, 164, 176);
+}
+
+.ed5-text-h1{
+    font-size: 24px;
+    line-height: 0.5;
+}
+
+
+/* ******************************************************************** */
+/* VAT INVOICE TITLE */
+/* ******************************************************************** */
+.div2{
+    grid-column: 1 / 4;
+    grid-row: 2;   
+    
+}
+
+
+
+
+
+/* ******************************************************************** */
+/* INVOICE TO */
+/* ******************************************************************** */
+.div3 {
+    grid-column: 1 / 3;
+    grid-row: 3 ;    
+    max-width: 230px;
+    padding-top: 4px;
+    
+}
+
+
+.school-details p {    
+    font-size: 16px; /* Adjust font size as needed */
+    max-width: 150px; /* Limit the width of the address line */    
+}
+
+
+
+
+
+
+
+/* ******************************************************************** */
+/* INVOICE No */
+/* ******************************************************************** */
+.div4 {
+    grid-column: 4 / 6;
+    grid-row: 3 ;
+    line-height: 1.3;
+    padding-left: 15px;  
+}
+
+.invoice-details {
+    padding-left: 4px; /* Adjust padding as needed */
+}
+
+.invoice-details h6, .invoice-details p {
+    margin: 5px 0; /* Adjust space between each detail */
+}
+
+
+/* ******************************************************************** */
+/* grey banner */
+/* ******************************************************************** */
+.banner-heading-1 {
+    grid-column: 1 / 8;
+    grid-row: 4;   
+    width: 97%; /* Full width of the container */   
+    background-color: #f0f0f0; /* Background color for the banner */ 
+    
+    box-sizing: border-box; /* Include padding in width calculation */
+    height: 8px;
+    
+}
+/* ******************************************************************** */
+/* grey banner */
+/* ******************************************************************** */
+.banner-heading-2 {
+    grid-column: 1 / 8;
+    grid-row: 6;   
+    width: 97%; /* Full width of the container */
+    background-color: #f0f0f0; /* Background color for the banner */
+    padding: 10px 0; /* Padding for top and bottom of the banner */
+    box-sizing: border-box; /* Include padding in width calculation */
+    height: 8px;    
+}
+
+
+
+
+
+/* ******************************************************************** */
+/* Titles Description, Quantity, Unit Price and Amount */
+/* ******************************************************************** */
+
+/* div5 holds all in description column */
+.div5 {
+    grid-column: 1 / 4;
+    grid-row: 4 ;     
+}
+
+/* description title */
+.div5 .description-title{
+    padding-top: 2px;
+    margin-bottom: 3px;
+}
+
+/* quantity title */
+.quantity {
+    grid-column: 4 ;
+    grid-row: 4 ; 
+    align-items: center;     /* Center vertically */
+    text-align: center;      /* Center text if needed */
+    padding-bottom: 12px;   
+    
+}
+
+/* Unit price title */
+.unit-price {
+    grid-column: 5 ;
+    grid-row: 4 ; 
+    align-items: center;     /* Center vertically */
+    text-align: center;      /* Center text if needed */    
+    margin: 0;
+    padding: 0;
+}
+
+/* amount title */
+.amount {
+    grid-column: 6 ;
+    grid-row: 4 ; 
+    align-items: center;     /* Center vertically */
+    text-align: center;      /* Center text if needed */
+}
+
+/* value for unit price */
+.unit-price-value{
+    margin-bottom: 22px;
+}
+
+/* ******************************************************************** */
+/* holds the words subtotal VAT and Total */
+/* ******************************************************************** */
+.subtotal-title {
+    grid-column: 4 ;
+    grid-row: 5 ; 
+    padding-top: 60px;
+    padding-left: 16px;
+
+}
+
+/* Makes Total title move */
+.subtotal-title .total-bold{
+    padding-top: 4px;
+}
+
+/* ******************************************************************** */
+/* subtotal holds subtotal, vat and total figures */
+/* ******************************************************************** */
+.subtotal {
+    grid-column: 4 ;
+    grid-row: 5 ; 
+    padding-top: 60px;   
+}
+
+
+
+
+
+
+
+
+
+/* ******************************************************************** */
+/* calculations div */
+/* ******************************************************************** */
+.calculations {
+    grid-column: 6 ;
+    grid-row: 5 ; 
+    align-items: center;     /* Center vertically */
+    text-align: center;      /* Center text if needed */
+
+}
+/* vat amount */
+.VAT2 {
+    padding-right: 28px;
+    
+}
+
+
+
+/* ******************************************************************** */
+/* payment details */
+/* ******************************************************************** */
+.payment-details {
+    padding-top: 40px;
+    grid-column: 1 / 8 ;
+    grid-row: 6 / 8 ; 
+    line-height: 1.3;
+    padding-bottom: 10px;
+    
+
+}
+
+.payment-details-title h6{
+    padding-bottom: 6px;
+    font-size: 16;
+
+}
+
+
+.instruction{
+    line-height: 24px;
+}
+
+
+/* ******************************************************************** */
+/* Footer */
+/* ******************************************************************** */
+
+
+.bottom-of-page {
+    font-size: 11px;
+    grid-column: 1 / 8;
+    grid-row: 8; 
+    display: flex;           /* Use Flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    text-align: center;      /* Center text if needed */
+    line-height: 1.3;
+    color: rgb#f0f0f0;
+}
+
+.item{
+    max-width: 600px;
+}
+
+
+
+
+
+/* ******************************************************************** */
+/* Print Button */
+/* ******************************************************************** */
+
+.print-button-container {
+    position: fixed; /* Fixed position relative to the viewport */
+    right: 50px; /* 10px from the right edge of the viewport */
+    top: 50%; /* Align the top of the element at the center of the screen */
+    transform: translateY(-50%); /* Shift the element up by half its height to truly center it vertically */
+    z-index: 1000; /* Ensures the button is above other elements */
+}
+
+.btn {
+    padding: 10px 20px; /* Adjust padding as needed */
+    /* Add any additional button styling here */
+    
+}
+
+.btn-shadow {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Horizontal offset, vertical offset, blur radius, color */
+}
+
+
+/* ******************************************************************** */
+
+/* ******************************************************************** */

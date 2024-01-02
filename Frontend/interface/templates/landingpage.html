@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <br><br><br>
+    <div class="container text-center">    
+        <h1>HR Management App</h1>
+        
+    </div>
+    <br>
+   <hr>
+   <br><br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <a href="{% url 'regular_Invoice' %}">
+                    <div class="square">Finance</div>
+                </a>                
+            </div>
+
+            <div class="col text-center">
+                <a href="{% url 'employees' %}">
+                <div class="square">Employees</div>
+                </a>
+            </div>
+
+            <div class="col text-center">
+                <a href="{% url 'schools' %}">
+                <div class="square">Schools</div>
+            </a> 
+            </div>
+
+            <div class="col text-center">
+                <a href="{% url 'email_school' %}">
+                <div class="square">Email</div>
+            </a> 
+            </div>
+
+            <div class="col text-center">
+                <a href="{% url 'stats' %}">
+                <div class="square">stats</div>
+            </a> 
+            </div>
+
+        </div>
+    </div>  
+    <br><br><br>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="scrolling-text">
+              <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> 
+              <span>Item 1</span> <span>Item 2</span> <span>Item 3</span>
+              <span>Item 1</span> 
+              <!-- More spans for scrolling text -->
+            </div>
+          </div>
+          <!-- Additional carousel items as needed -->
+        </div>
+      </div>   
+{% endblock %}
