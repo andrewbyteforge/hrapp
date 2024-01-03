@@ -17,9 +17,6 @@
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Add drop shadow */
 }
 
-
-
-
 /* NAVBAR */
 .navbar-light .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
@@ -104,3 +101,176 @@
 .button-margin-right {
     margin-top: 10px;
 }
+
+.main-container {
+    display: grid;
+    width: 1500px;    
+    grid-template-columns: repeat(8); /* Eight columns */
+    grid-template-rows: repeat(100); /* Split into four rows for control over the row height */
+    gap: 10px;
+    margin-top: 200px;
+}
+
+.one {
+    grid-column: 1;
+    grid-row: 10 / 40; 
+    background-color: #A6AA9D;
+    position: relative;
+}
+
+.one-quarter {
+    grid-column: 1;
+    grid-row: 40 / 70; /* Span one-quarter of the height */
+    background-color: #A6AA9D; /* Different color to distinguish */
+    position: relative;
+}
+
+.two {
+    grid-column: 2 / 5;
+    grid-row: 1 / 80;
+    background-color: #A6AA9D;; /* Different color for visibility */
+    position: relative;
+}
+
+.three {
+    grid-column: 5 / 6;
+    grid-row: 10 / 50;
+    background-color: #A6AA9D;; /* Different color for visibility */
+    position: relative;
+}
+
+.four {
+    grid-column: 6 / 7;
+    grid-row: 10 / 70;
+    background-color: #A6AA9D;; /* Different color for visibility */
+    position: relative;
+}
+
+/* Hover effect for containers */
+.one:hover, .one-quarter:hover, .two:hover, .three:hover, .four:hover {
+    transform: scale(1.05); /* Slightly scale up the div */
+    z-index: 10; /* Ensure the div is above the others */
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.8); /* Add shadow for a 'lifted' effect */
+}
+
+/* Since we're scaling on hover, let's make sure the transition is smooth */
+.one, .one-quarter, .two, .three, .four {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Other styles remain unchanged */
+    border-radius: 10px;
+}
+
+
+.spare{
+    grid-column: 5 / 6;
+    grid-row: 50 / 70;
+    background-color: #e9e97f;
+    position: relative;
+    
+
+}
+
+/* New bottom section style */
+.bottom-section {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px; /* Set the height of the dark blue section */
+    background-color: #10263D; /* Dark blue color */
+    transition: background-color 0.3s;
+    border-bottom-left-radius: 10px; /* Rounded bottom left corner */
+    border-bottom-right-radius: 10px;
+}
+
+
+
+/* New hover effect for .bottom-section */
+.bottom-section:hover {
+    background-color: #ec4a4a; /* Light red color on hover */
+}
+
+.h2-font{
+    font-weight: 300;
+    font-size: 14px;
+    font-family: "ff-din-web", Helvetica, Arial, sans-serif;
+    padding-top: 12px;
+    color: aliceblue;
+    text-transform: uppercase;
+    line-height: 1.0;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+.bottom-section {
+    /* ... other styles ... */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    padding: 0 20px; /* Add padding on the sides */
+}
+
+.left-text {
+    flex: 1; /* Take up the remaining space */
+    padding-right: 10px; /* Space before the vertical line */
+}
+
+
+
+.right-text {
+    flex: 2; /* Allow this text to take twice as much space as the left text */
+    padding-left: 20px; /* Space after the vertical line */
+    word-wrap: break-word; /* Ensure the text wraps */
+}
+
+
+
+/* Adjust the font size for p tags inside .right-text if needed */
+.right-text p {
+    font-size: 14px; /* Adjust as needed */
+    margin: 0; /* Remove default margin */
+    padding-top: 5px;
+    color: aliceblue;
+}
+
+/* Override Bootstrap navbar background color */
+.navbar.navbar-expand-lg {
+    background-color: #10263D !important; /* Dark blue color */
+}
+
+/* Override Bootstrap navbar link color */
+.navbar-light .navbar-brand, 
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-toggler {
+    color: white !important;
+}
+
+/* Override Bootstrap navbar toggler icon color */
+.navbar-light .navbar-toggler-icon {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Styles for dropdown menu items */
+.navbar-light .navbar-nav .nav-item .dropdown-menu .dropdown-item {
+    color: white !important; /* White text for dropdown items */
+}
+
+/* Change dropdown item background color on hover */
+.navbar-light .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
+    background-color: #0c1a2b !important; /* Slightly lighter blue for hover */
+}
+
+/* Styles for dropdown menu */
+.navbar-light .navbar-nav .nav-item .dropdown-menu {
+    background-color: #10263D; /* Dark blue background for dropdown */
+}
+
+.navbar-light .navbar-nav .nav-item .dropdown-menu .dropdown-item {
+    color: white !important; /* White text for dropdown items */
+}
+
+/* Change dropdown item background color on hover */
+.navbar-light .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
+    background-color: #0c1a2b !important; /* Slightly lighter blue for hover */
+}
+
+

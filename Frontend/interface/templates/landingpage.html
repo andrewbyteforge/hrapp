@@ -1,68 +1,80 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<center>
+<div class="main-container">
+            <div class="one">
+                <a href="{% url 'regular_Invoice' %}">             
+                    <div class="bottom-section">
+                        <div class="left-text">
+                            <h2 class="h2-font">Finance</h2>
+                        </div>                    
+                        <div class="right-text">
+                            <p>All things financial</p>                        
+                        </div>
+                    </div>
+                </a>   
+            </div>
 
-    <br><br><br>
-    <div class="container text-center">    
-        <h1>HR Management App</h1>
+
+            <div class="one-quarter">
+                <a href="{% url 'employees' %}">               
+                    <div class="bottom-section">
+                        <div class="left-text">
+                            <h2 class="h2-font">Manage employees</h2>
+                        </div>                    
+                        <div class="right-text">
+                            <p>Take care of employees</p>                        
+                        </div>
+                    </div>
+                </a>  
+            </div>
+
+
+            <div class="two">
+                <a href="{% url 'schools' %}">                
+                    <div class="bottom-section">
+                        <div class="left-text">
+                            <h2 class="h2-font">Schools</h2>
+                        </div>                    
+                        <div class="right-text">
+                            <p>Manage schools</p>                        
+                        </div>
+                    </div>
+                </a>  
+            </div>
+
+
+            <div class="three"> 
+                <a href="{% url 'email_school' %}">          
+                    <div class="bottom-section">
+                                        
+                        <div class="left-text">
+                            <h2 class="h2-font">Email</h2>
+                        </div>                    
+                        <div class="right-text">
+                            <p>Send clients emails</p>                        
+                        </div>
+                    </div>
+                </a>  
+            </div>
         
-    </div>
-    <br>
-   <hr>
-   <br><br><br>
-
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <a href="{% url 'regular_Invoice' %}">
-                    <div class="square">Finance</div>
-                </a>                
+            <div class="spare">                
             </div>
 
-            <div class="col text-center">
-                <a href="{% url 'employees' %}">
-                <div class="square">Employees</div>
-                </a>
+            <div class="four">  
+                    <a href="{% url 'data' %}">         
+                        <div class="bottom-section">
+                            
+                            <div class="left-text">
+                                <h2 class="h2-font">Stats</h2>
+                            </div>                    
+                            <div class="right-text">
+                                <p>Stats regarding business</p>                        
+                            </div>
+                        </div>
+                    </a> 
             </div>
-
-            <div class="col text-center">
-                <a href="{% url 'schools' %}">
-                <div class="square">Schools</div>
-            </a> 
-            </div>
-
-            <div class="col text-center">
-                <a href="{% url 'email_school' %}">
-                <div class="square">Email</div>
-            </a> 
-            </div>
-
-            <div class="col text-center">
-                <a href="{% url 'data' %}">
-                <div class="square">stats</div>
-            </a> 
-            </div>
-
-            <div class="col text-center">
-                <a href="">
-                <div class="square">other</div>
-            </a> 
-            </div>
-
-        </div>
-    </div>  
-    <br><br><br>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="scrolling-text">
-              <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> 
-              <span>Item 1</span> <span>Item 2</span> <span>Item 3</span>
-              <span>Item 1</span> 
-              <!-- More spans for scrolling text -->
-            </div>
-          </div>
-          <!-- Additional carousel items as needed -->
-        </div>
-      </div>   
+</div>
+<br><br><br>
 {% endblock %}
