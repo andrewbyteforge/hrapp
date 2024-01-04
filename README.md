@@ -57,7 +57,7 @@ Assign employee school
 
 Input work completed by employee
 
-See graph in stats
+See graph in stats for employee and school / client
 
 
 <br>
