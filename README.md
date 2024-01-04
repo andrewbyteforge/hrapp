@@ -66,27 +66,31 @@ See graph in stats
 <h1><b>Screenshots</b></h1>
 <br>
 <br>
+<h1><b>Landing Page</b></h1>
 <br>
 
 ![Picture2](https://github.com/andrewbyteforge/hrapp/assets/155364089/1c164316-7d3b-4179-b34f-557def6d427f)
-
-
 <br>
-<hr>
+<br>
+<br>
+<br>
+<h1><b>Landing Page </b></h1>
 <br>
 
 ![Screenshot 2024-01-04 at 17-34-34 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/4a5d0649-3e6c-460d-9f5b-5692a04d71a0)
 
 
 <br>
-<hr>
+<br>
+<h1><b>Client Graph</b></h1>
 <br>
 
 ![Screenshot 2024-01-04 at 17-35-49 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/43f60b76-da02-4593-b584-ed76326bcaa4)
 
 
 <br>
-<hr>
+<br>
+<h1><b>Employee Graph</b></h1>
 <br>
 
 ![Screenshot 2024-01-04 at 17-32-52 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/d7e7c26e-5aaf-4edb-b98d-95eac7c282e9)
@@ -94,7 +98,8 @@ See graph in stats
 
 
 <br>
-<hr>
+<br>
+<h1><b>Stats Selection</b></h1>
 <br>
 
 
