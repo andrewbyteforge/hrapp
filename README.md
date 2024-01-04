@@ -17,7 +17,7 @@ The school value in Finance is populated from the database of schools that are a
 <br>
 <b>Employees: </b>
 <br>
-This section allows the creation of employees along with the editing of certain details. Within the view dashboard of the employee schools (clients) can be assigned and calculations made regarding company earning / employee earnings.
+This section allows the creation of employees along with the editing of certain details. Within the view dashboard of the employee schools (clients) can be assigned and calculations made regarding company earning / employee earnings. Graphs for the client and employees are generated based on the numbers input.
 Of course, the school (client) can also be deleted.
 <br>
 <br>
