@@ -2,32 +2,29 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2><b>Edit School</b></h2>
-    <form method="post" class="mt-4">
-        {% csrf_token %}
-
-        <div class="mb-3">
-            <label for="name" class="form-label">School Name:</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ school.name }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="address" class="form-label">Address:</label>
-            <textarea class="form-control" id="address" name="address" required>{{ school.address }}</textarea>
-        </div>
-
-        <div class="mb-3">
-            <label for="postcode" class="form-label">Postcode:</label>
-            <input type="text" class="form-control" id="postcode" name="postcode" value="{{ school.postcode }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{ school.email }}" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{% url 'landingpage' %}" class="btn btn-warning shadow-lg">Back</a>
-    </form>
+    <div class="form-wrapper">  <!-- Add this wrapper -->
+        <h2><b>Edit School</b></h2>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">School Name:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ school.name }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address:</label>
+                <textarea class="form-control" id="address" name="address" required>{{ school.address }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="postcode" class="form-label">Postcode:</label>
+                <input type="text" class="form-control" id="postcode" name="postcode" value="{{ school.postcode }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" class="form-control" id="email" name="email" value="{{ school.email }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{% url 'landingpage' %}" class="btn btn-warning shadow-lg">Back</a>
+        </form>
+    </div>
 </div>
 {% endblock %}

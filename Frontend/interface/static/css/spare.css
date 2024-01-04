@@ -1,0 +1,58 @@
+@keyframes slideIn {
+    from {
+        transform: translateX(-40%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.spare {
+    position: relative; /* Required for positioning the pseudo-element */
+    /* ... your existing styles ... */
+}
+
+.spare h5 {
+    display: inline-block; /* Allows transformation */
+    animation-duration: 1s; /* Speed of the animation */
+    animation-fill-mode: forwards; /* Keeps the element in the end state of animation */
+    padding-top: 90px;}
+
+
+
+
+.spare:after {
+    content: "";
+    position: absolute;
+    right: -10px; /* Adjust as needed */
+    bottom: -10px; /* Adjust as needed */
+    width: 30px; /* Size of the curled corner */
+    height: 30px; /* Size of the curled corner */
+    border-radius: 50%;
+    box-shadow: 10px 10px 0 0 #fff; /* Color should match the background of .spare */
+    transform: rotate(45deg); /* Rotate to create the curled effect */
+}
+
+.spare h5 {
+    font-family: 'Pacifico-Regular', sans-serif;
+    font-size: 35px;
+    padding-top: 90px;
+    color: #10263D;
+    line-height: 0.001;
+    text-align: left;
+    padding-left: 15px;
+}
+

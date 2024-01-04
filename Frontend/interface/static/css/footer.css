@@ -1,0 +1,5 @@
+footer.footer {
+    margin-top: auto; /* Pushes the footer to the bottom */
+    background-color: #0c1a2b !important; /* Your desired background color */
+    color: white; /* Footer text color */
+  }

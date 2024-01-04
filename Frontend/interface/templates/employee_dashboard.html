@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br>
+<br>
 <div class="row">
 <!-- Profile Card -->
 <div class="col-md-4">
@@ -101,7 +103,7 @@
         <div class="employee-schools">
             
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSchoolModal">Add School</button>
-            <a href="{% url 'landingpage' %}" class="btn btn-warning shadow-lg">Back</a>
+            <a href="{% url 'employees' %}" class="btn btn-warning shadow-lg">Back</a>
         
             <!-- Add School Modal -->
             <div class="modal fade" id="addSchoolModal" tabindex="-1" aria-labelledby="addSchoolModalLabel" aria-hidden="true">
@@ -243,4 +245,17 @@
         }                       
     </script>
 </form>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}

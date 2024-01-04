@@ -1,33 +1,54 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-<br><br><br>
-<div class="container text-center">    
-    <h1>HR Management App</h1>        
-</div>
-<br>
-<hr>
-<br><br><br>
-<div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <a href="{% url 'analytics_data' %}">
-                    <div class="square">Employee Stats</div>
-                </a>                
-            </div>
+  <br><br><br>
+  <div class="container text-center">    
+    <h1>HR Management App</h1>          
+  </div>
+  <br>
+  <hr>
+  <br><br><br>  
 
-            <div class="col text-center">
+  <center>
+      <div class="main-container-regular-invoice">
+            <div class="regular-invoice-one">
+                <a href="{% url 'analytics_data' %}"> 
+                  <img src="{% static 'images/stats.png' %}" alt="Invoice">              
+                  <div class="bottom-section">
+                      <h2 class="h2-font"><b>Employees stats</b></h2>
+                      <div class="right-text">
+                        <p>Create invoices</p>                        
+                    </div>
+                  </div>
+                </a>  
+            </div>
+            <div class="regular-invoice-two">
                 <a href="{% url 'stats' %}">
-                    <div class="square">Client stats</div>
-                </a>
-            </div>            
-        </div>
-        <br>
-        <br>
-        <center>
-            <a href="{% url 'landingpage' %}" class="btn btn-warning shadow-lg" style="margin-right: 10px;">Back</a>
-        </center>
-</div>
-<br><br><br>
+                  <img src="{% static 'images/stats.png' %}" alt="Invoice">              
+                  <div class="bottom-section">
+                      <h2 class="h2-font"><b>Client stats</b></h2>
+                      <div class="right-text">
+                        <p>Create custom invoice for clients</p>                        
+                    </div>
+                  </div>
+                </a>  
+            </div>       
+      </div>        
+      <br>
+      <br> 
+      <br> 
+      <center>
+        <a href="{% url 'landingpage' %}" class="btn btn-warning shadow-lg">Back</a>
+      </center>        
+  </center>
+  <br><br><br>   
 {% endblock %}
+
+
+
+
+
+
+
+

@@ -1,24 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <center>
-<div class="main-container">
-            <div class="one">
-                <a href="{% url 'regular_Invoice' %}">             
-                    <div class="bottom-section">
-                        <div class="left-text">
-                            <h2 class="h2-font">Finance</h2>
-                        </div>                    
-                        <div class="right-text">
-                            <p>All things financial</p>                        
-                        </div>
+    <div class="main-container">
+        <div class="one">
+            <a href="{% url 'regular_Invoice' %}">     
+                <img src="{% static 'images/finance.png' %}" alt="Finance">                             
+                <div class="bottom-section">
+                    <div class="left-text">
+                        <h2 class="h2-font">Finance</h2>
+                    </div>                    
+                    <div class="right-text">
+                        <p>All things financial</p>                        
                     </div>
-                </a>   
-            </div>
+                </div>
+            </a>   
+        </div>
 
 
             <div class="one-quarter">
-                <a href="{% url 'employees' %}">               
+                <a href="{% url 'employees' %}">   
+                    <img src="{% static 'images/employees.png' %}" alt="Employees">           
                     <div class="bottom-section">
                         <div class="left-text">
                             <h2 class="h2-font">Manage employees</h2>
@@ -32,7 +35,8 @@
 
 
             <div class="two">
-                <a href="{% url 'schools' %}">                
+                <a href="{% url 'schools' %}">  
+                    <img src="{% static 'images/school.png' %}" alt="school">            
                     <div class="bottom-section">
                         <div class="left-text">
                             <h2 class="h2-font">Schools</h2>
@@ -46,7 +50,8 @@
 
 
             <div class="three"> 
-                <a href="{% url 'email_school' %}">          
+                <a href="{% url 'email_school' %}">  
+                    <img src="{% static 'images/email.png' %}" alt="Email">   
                     <div class="bottom-section">
                                         
                         <div class="left-text">
@@ -59,11 +64,14 @@
                 </a>  
             </div>
         
-            <div class="spare">                
+            <div class="spare">                  
+                <h5 id="slidingText">Good! Work</h5>   
             </div>
+            
 
             <div class="four">  
-                    <a href="{% url 'data' %}">         
+                    <a href="{% url 'data' %}">   
+                        <img src="{% static 'images/stats.png' %}" alt="statistics">       
                         <div class="bottom-section">
                             
                             <div class="left-text">
@@ -76,5 +84,27 @@
                     </a> 
             </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const messages = ["You are", "doing great!", "Keep it up!", "Go You!", "Right on!"];
+    let currentIndex = 0;
+
+    const textElement = document.getElementById("slidingText");
+    setInterval(() => {
+        // Slide out current message
+        textElement.style.animationName = 'slideOut';
+
+        setTimeout(() => {
+            // Change message after slide out
+            currentIndex = (currentIndex + 1) % messages.length;
+            textElement.textContent = messages[currentIndex];
+
+            // Slide in next message
+            textElement.style.animationName = 'slideIn';
+        }, 1000); // This should match the animation-duration
+    }, 15000); // Change message every 15 seconds
+});
+</script>
+</center>
 <br><br><br>
 {% endblock %}
