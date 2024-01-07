@@ -1,16 +1,7 @@
 html, body {
     height: 100%; /* Ensure the full height of the page is used */
-  }
-
-body {
     display: flex;
     flex-direction: column; /* Stack elements vertically */
-  }
-  
-footer.footer {
-    margin-top: auto; /* Pushes the footer to the bottom */
-    background-color: #0c1a2b !important; /* Your desired background color */
-    color: white; /* Footer text color */
   }
 
 /* SQUARES */
@@ -38,14 +29,6 @@ footer.footer {
 }
 
 
-
-
-/* NAVBAR */
-.navbar-light .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-
 /* SCROLLING TEXT */
 .scrolling-text {
     white-space: nowrap;
@@ -53,6 +36,7 @@ footer.footer {
     box-sizing: border-box;
     margin: 60px 0;
     width: 100vw; /* Set the width to be 100% of the viewport width */
+    animation: scroll 60s linear infinite;
 }
 
 .scrolling-text span {
@@ -65,55 +49,10 @@ footer.footer {
     100% { transform: translate3d(-100%, 0, 0); } /* Ends off the left side */
 }
 
-.scrolling-text {
-    width: 100vw;
-    animation: scroll 60s linear infinite;
-
-}
-
 /* Increase specificity to ensure this style takes precedence */
 .square a, .square a:hover, .square a:visited, .square a:active {
     text-decoration: none !important; /* Force removal of underline */
     color: inherit; /* Inherit text color from parent element */
-}
-
-
-.employee-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding-top: 40px;
-    /* Removed or reduced padding-top */
-}
-  .employee-card {
-    width: 18rem; /* Moved the width here for cleaner HTML */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Drop shadow */
-  }
-  .employee-schools table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.employees-heading{
-    padding-left: 60px;
-}
-
-.employee-schools th, .employee-schools td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-.employee-schools th {
-    background-color: #f2f2f2;
-}
-
-.employee-schools button {
-    margin-right: 10px; /* Space between buttons */
-    padding: 5px 10px; /* Padding for the buttons */
-    /* Add more styling as needed */
 }
 
 .centered-cell {
@@ -125,121 +64,6 @@ footer.footer {
     margin-top: 10px;
 }
 
-.main-container {
-    display: grid;
-    width: 1500px;    
-    grid-template-columns: repeat(8); /* Eight columns */
-    grid-template-rows: repeat(100); /* Split into four rows for control over the row height */
-    gap: 10px;
-    margin-top: 200px;
-}
-
-.main-container img {
-    width: 100px; /* Adjust as needed */
-    height: auto;
-    display: block; /* Centers the image in the div */
-    margin: 0 auto; /* Centers the image horizontally */
-}
-
-.one {
-    grid-column: 1;
-    grid-row: 10 / 40; 
-    background-color: #A6AA9D;
-    position: relative;
-}
-
-.one img {
-    margin-top: 40px; /* Adjust this value as needed */
-    width: 100px; /* Adjust as needed */
-    height: auto;
-    display: block; /* Centers the image in the div */
-    margin-left: auto;
-    margin-right: auto; /* Centers the image horizontally */
-}
-
-
-.one-quarter {
-    grid-column: 1;
-    grid-row: 40 / 70; /* Span one-quarter of the height */
-    background-color: #A6AA9D; /* Different color to distinguish */
-    position: relative;
-}
-
-.one-quarter img {
-    margin-top: 40px; /* Adjust this value as needed */
-    width: 100px; /* Adjust as needed */
-    height: auto;
-    display: block; /* Centers the image in the div */
-    margin-left: auto;
-    margin-right: auto; /* Centers the image horizontally */
-}
-
-
-.two {
-    grid-column: 2 / 5;
-    grid-row: 1 / 80;
-    background-color: #A6AA9D;; /* Different color for visibility */
-    position: relative;
-}
-
-.two img {
-    margin-top: 240px; /* Adjust this value as needed */
-    width: 150px; /* Adjust as needed */
-    height: auto;
-    display: block; /* Centers the image in the div */
-    margin-left: auto;
-    margin-right: auto; /* Centers the image horizontally */
-}
-
-
-.three {
-    grid-column: 5 / 6;
-    grid-row: 10 / 50;
-    background-color: #A6AA9D;; /* Different color for visibility */
-    position: relative;
-}
-
-
-.three img {
-    margin-top: 80px; /* Adjust this value as needed */
-    width: 100px; /* Adjust as needed */
-    height: auto;
-    display: block; /* Centers the image in the div */
-    margin-left: auto;
-    margin-right: auto; /* Centers the image horizontally */
-}
-
-
-
-.four {
-    grid-column: 6 / 7;
-    grid-row: 10 / 70;
-    background-color: #A6AA9D;; /* Different color for visibility */
-    position: relative;
-}
-
-.four img {
-    margin-top: 190px; /* Adjust this value as needed */
-    width: 100px; /* Adjust as needed */
-    height: auto;
-    display: block; /* Centers the image in the div */
-    margin-left: auto;
-    margin-right: auto; /* Centers the image horizontally */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Hover effect for containers */
 .one:hover, .one-quarter:hover, .two:hover, .three:hover, .four:hover {
@@ -248,21 +72,11 @@ footer.footer {
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.8); /* Add shadow for a 'lifted' effect */
 }
 
-/* Since we're scaling on hover, let's make sure the transition is smooth */
+/* transition to smooth */
 .one, .one-quarter, .two, .three, .four {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* Other styles remain unchanged */
     border-radius: 10px;
-}
-
-
-.spare{
-    grid-column: 5 / 6;
-    grid-row: 50 / 70;
-    background-color: #e9e97f;
-    position: relative;
-    
-
 }
 
 /* New bottom section style */
@@ -276,9 +90,8 @@ footer.footer {
     transition: background-color 0.3s;
     border-bottom-left-radius: 10px; /* Rounded bottom left corner */
     border-bottom-right-radius: 10px;
+    
 }
-
-
 
 /* New hover effect for .bottom-section */
 .bottom-section:hover {
@@ -297,27 +110,18 @@ footer.footer {
     letter-spacing: 1px;
 }
 
-.bottom-section {
-    /* ... other styles ... */
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    padding: 0 20px; /* Add padding on the sides */
-}
-
+/* bottom of new section of square */
 .left-text {
     flex: 1; /* Take up the remaining space */
     padding-right: 10px; /* Space before the vertical line */
 }
 
-
-
+/* bottom of new section of square */
 .right-text {
     flex: 2; /* Allow this text to take twice as much space as the left text */
     padding-left: 20px; /* Space after the vertical line */
     word-wrap: break-word; /* Ensure the text wraps */
 }
-
-
 
 /* Adjust the font size for p tags inside .right-text if needed */
 .right-text p {
@@ -327,48 +131,7 @@ footer.footer {
     color: aliceblue;
 }
 
-/* Override Bootstrap navbar background color */
-.navbar.navbar-expand-lg {
-    background-color: #10263D !important; /* Dark blue color */
-}
-
-/* Override Bootstrap navbar link color */
-.navbar-light .navbar-brand, 
-.navbar-light .navbar-nav .nav-link,
-.navbar-light .navbar-toggler {
-    color: white !important;
-}
-
-/* Override Bootstrap navbar toggler icon color */
-.navbar-light .navbar-toggler-icon {
-    filter: invert(1) grayscale(100%) brightness(200%);
-}
-
-/* Styles for dropdown menu items */
-.navbar-light .navbar-nav .nav-item .dropdown-menu .dropdown-item {
-    color: white !important; /* White text for dropdown items */
-}
-
-/* Change dropdown item background color on hover */
-.navbar-light .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
-    background-color: #0c1a2b !important; /* Slightly lighter blue for hover */
-}
-
-/* Styles for dropdown menu */
-.navbar-light .navbar-nav .nav-item .dropdown-menu {
-    background-color: #10263D; /* Dark blue background for dropdown */
-}
-
-.navbar-light .navbar-nav .nav-item .dropdown-menu .dropdown-item {
-    color: white !important; /* White text for dropdown items */
-}
-
-/* Change dropdown item background color on hover */
-.navbar-light .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
-    background-color: #0c1a2b !important; /* Slightly lighter blue for hover */
-}
-
-
+/* whole card */
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition for transform and shadow */
     /* Keep existing styles */
@@ -381,6 +144,7 @@ footer.footer {
     z-index: 10; 
 }
 
+/* Spare animation */
 @keyframes slideInFromLeft {
     0% {
       transform: translateX(-100%); /* Start from off-screen on the left */
@@ -393,22 +157,9 @@ footer.footer {
   }
 
 
-  .card {
-    /* ... existing styles ... */
-    animation: slideInFromLeft 1.5s ease forwards; /* Apply the animation */
-}
-
-
-.employee-wrapper .card:nth-child(1) {
-    animation-delay: 0.1s; /* Delays the animation for the first card */
-}
-
-.employee-wrapper .card:nth-child(2) {
-    animation-delay: 0.2s; /* Delays the animation for the second card */
-}
-
-.employee-wrapper .card:nth-child(3) {
-    animation-delay: 0.3s; /* Delays the animation for the third card */
+.card {
+/* ... existing styles ... */
+animation: slideInFromLeft 1.5s ease forwards; /* Apply the animation */
 }
 
 /* Add more as needed for additional cards */

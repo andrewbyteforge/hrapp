@@ -1,0 +1,49 @@
+.employee-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    /* Removed or reduced padding-top */
+}
+  .employee-card {
+    width: 18rem; /* Moved the width here for cleaner HTML */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Drop shadow */
+  }
+  .employee-schools table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employees-heading{
+    padding-left: 60px;
+}
+
+.employee-schools th, .employee-schools td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.employee-schools th {
+    background-color: #f2f2f2;
+}
+
+.employee-schools button {
+    margin-right: 10px; /* Space between buttons */
+    padding: 5px 10px; /* Padding for the buttons */
+    /* Add more styling as needed */
+}
+
+.employee-wrapper .card:nth-child(1) {
+    animation-delay: 0.1s; /* Delays the animation for the first card */
+}
+
+.employee-wrapper .card:nth-child(2) {
+    animation-delay: 0.2s; /* Delays the animation for the second card */
+}
+
+.employee-wrapper .card:nth-child(3) {
+    animation-delay: 0.3s; /* Delays the animation for the third card */
+}
