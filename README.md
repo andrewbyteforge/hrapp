@@ -17,7 +17,7 @@ The school value in Finance is populated from the database of schools that are a
 <br>
 <b>Employees: </b>
 <br>
-This section allows the creation of employees along with the editing of certain details. Within the view dashboard of the employee schools (clients) can be assigned and calculations made regarding company earning / employee earnings.
+This section allows the creation of employees along with the editing of certain details. Within the view dashboard of the employee schools (clients) can be assigned and calculations made regarding company earning / employee earnings. Graphs for the client and employees are generated based on the numbers input.
 Of course, the school (client) can also be deleted.
 <br>
 <br>
@@ -57,7 +57,7 @@ Assign employee school
 
 Input work completed by employee
 
-See graph in stats
+See graph in stats for employee and school / client
 
 
 <br>
@@ -66,36 +66,46 @@ See graph in stats
 <h1><b>Screenshots</b></h1>
 <br>
 <br>
+<h1><b>Landing Page</b></h1>
 <br>
 
-![Capture1](https://github.com/andrewbyteforge/hrapp/assets/155364089/c7cb6a3b-8eeb-4cdb-893f-fa332984399e)
-
+![Picture2](https://github.com/andrewbyteforge/hrapp/assets/155364089/1c164316-7d3b-4179-b34f-557def6d427f)
 <br>
-<hr>
 <br>
-
-![Capture2](https://github.com/andrewbyteforge/hrapp/assets/155364089/0d4c3eb0-fdc1-4ab3-bfc5-1d2da63f74c4)
-
 <br>
-<hr>
+<br>
+<h1><b>Landing Page </b></h1>
 <br>
 
-![Capture3](https://github.com/andrewbyteforge/hrapp/assets/155364089/e744b472-c9ae-4c14-9cce-48de6f4713e1)
-
-<br>
-<hr>
-<br>
-
-![Capture4](https://github.com/andrewbyteforge/hrapp/assets/155364089/7397d35a-6607-48d7-bb8b-0179cb21423b)
+![Screenshot 2024-01-04 at 17-34-34 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/4a5d0649-3e6c-460d-9f5b-5692a04d71a0)
 
 
 <br>
-<hr>
+<br>
+<h1><b>Client Graph</b></h1>
+<br>
+
+![Screenshot 2024-01-04 at 17-35-49 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/43f60b76-da02-4593-b584-ed76326bcaa4)
+
+
+<br>
+<br>
+<h1><b>Employee Graph</b></h1>
+<br>
+
+![Screenshot 2024-01-04 at 17-32-52 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/d7e7c26e-5aaf-4edb-b98d-95eac7c282e9)
+
+
+
+<br>
+<br>
+<h1><b>Stats Selection</b></h1>
 <br>
 
 
+![Screenshot 2024-01-04 at 17-33-36 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/d82c22dc-2659-4316-8afb-b70c7315631e)
 
-![Capture5](https://github.com/andrewbyteforge/hrapp/assets/155364089/28d4cb46-7fca-4210-b7e4-bf32b07100bd)
+
 
 
 
@@ -105,61 +115,5 @@ See graph in stats
 <br>
 
 <h4>Project under development</h4>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
