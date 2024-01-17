@@ -9,6 +9,12 @@ class School(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Attendance(models.Model):
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    month = models.DateField()
+    attendance_percentage = models.FloatField()
+    
        
 class InvoiceCounter(models.Model):
     last_invoice_number = models.IntegerField(default=0)

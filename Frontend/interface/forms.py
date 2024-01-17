@@ -86,3 +86,7 @@ class AddEmployeeForm(forms.ModelForm):
             'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
             # Add other widgets as needed
         }
+        
+        
+class SchoolSelectionForm(forms.Form):
+    school = forms.ModelChoiceField(queryset=School.objects.all())

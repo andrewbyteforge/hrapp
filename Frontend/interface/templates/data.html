@@ -18,7 +18,7 @@
                   <div class="bottom-section">
                       <h2 class="h2-font"><b>Employees stats</b></h2>
                       <div class="right-text">
-                        <p>Create invoices</p>                        
+                        <p>Employee and Ed5 earnings</p>                        
                     </div>
                   </div>
                 </a>  
@@ -27,13 +27,27 @@
                 <a href="{% url 'stats' %}">
                   <img src="{% static 'images/stats.png' %}" alt="Invoice">              
                   <div class="bottom-section">
-                      <h2 class="h2-font"><b>Client stats</b></h2>
+                      <h2 class="h2-font"><b>Client Financial</b></h2>
                       <div class="right-text">
-                        <p>Create custom invoice for clients</p>                        
+                        <p>Payments from clients</p>                        
                     </div>
                   </div>
                 </a>  
-            </div>       
+            </div>     
+            
+            <div class="regular-invoice-three">
+              <a href="{% url 'client_attendance' %}">
+                <img src="{% static 'images/stats.png' %}" alt="Invoice">              
+                <div class="bottom-section">
+                    <h2 class="h2-font"><b>Client Attendance</b></h2>
+                    <div class="right-text">
+                      <p>Attendance per school</p>                        
+                  </div>
+                </div>
+              </a>  
+          </div>  
+
+            
       </div>        
       <br>
       <br> 

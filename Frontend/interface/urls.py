@@ -58,7 +58,19 @@ urlpatterns = [
     path('fetch_school_data/', views.fetch_school_data, name='fetch_school_data'),
     path('client_analytics/', views.client_analytics, name='client_analytics'),
     path('employee_analytics/', views.employee_analytics, name='employee_analytics'),
+    path('client_attendance/', views.client_attendance, name='client_attendance'),
+    path('add-attendance/', views.add_attendance, name='add_attendance'),
+    path('submit-attendance/', views.submit_attendance, name='submit_attendance'),
+    path('attendance_data/', views.attendance_data, name='attendance_data'),
+    path('delete_database/', views.delete_database, name='delete_database'),
+    path('comparison_year/', views.comparison_year, name='comparison_year'),
+    
+    
+    
 ]
+
+
+
 
 
 # Serve static and media files from development server

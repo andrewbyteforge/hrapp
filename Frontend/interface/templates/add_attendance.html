@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <h2>Add Attendance</h2>
+    <form action="{% url 'submit_attendance' %}" method="post" id="attendanceForm">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="schoolSelect" class="form-label">School</label>
+            <select class="form-select" id="schoolSelect" name="school">
+                <option selected>Choose...</option>
+                {% for school in schools %}
+                    <option value="{{ school.id }}">{{ school.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="yearSelect" class="form-label">Year</label>
+            <select class="form-select" id="yearSelect" name="year">
+                {% for year in years %}
+                    <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="monthSelect" class="form-label">Month</label>
+            <select class="form-select" id="monthSelect" name="month">
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="percentageInput" class="form-label">Attendance Percentage</label>
+            <input type="number" step="0.01" class="form-control" id="percentageInput" name="attendance_percentage" required>
+            <p id="percentageError" class="text-danger"></p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{% url 'client_attendance' %}" class="btn btn-warning">Back</a>
+    </form>
+</div>
+
+<!-- Add this script to validate the input -->
+<script>
+    document.getElementById('attendanceForm').addEventListener('submit', function(event) {
+        var percentageInput = document.getElementById('percentageInput');
+        var percentageError = document.getElementById('percentageError');
+        var percentageValue = parseFloat(percentageInput.value);
+
+        // Check if the input is a valid number between 0 and 100
+        if (isNaN(percentageValue) || percentageValue < 0 || percentageValue > 100) {
+            event.preventDefault(); // Prevent form submission
+            percentageError.textContent = 'Please enter a valid attendance percentage between 0 and 100.';
+        } else {
+            percentageError.textContent = ''; // Clear any previous error message
+        }
+    });
+</script>
+
+{% endblock %}

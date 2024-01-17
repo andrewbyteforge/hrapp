@@ -1,11 +1,16 @@
 .main-container-regular-invoice {
     display: grid;
-    width: 800px;    
+    width: 1000px;    
     grid-template-columns: repeat(8); /* Eight columns */
     grid-template-rows: repeat(100); /* Split into four rows for control over the row height */
     gap: 10px;
     
 }
+
+
+/* ***************************************************************************** */
+/* Cards************************************************************************ */
+/* ***************************************************************************** */
 
 .regular-invoice-one {
     grid-column: 1;
@@ -45,7 +50,28 @@
 }
 
 
+.regular-invoice-three {
+    grid-column: 3 / 4;
+    grid-row: 10 / 60;
+    background-color: #A6AA9D;; /* Different color for visibility */
+    position: relative;
+    border-radius: 10px;
+    margin-left: 40px;
+}
 
+.regular-invoice-three img {
+    margin-top: 120px; /* Adjust this value as needed */
+    width: 100px; /* Adjust as needed */
+    height: auto;
+    display: block; /* Centers the image in the div */
+    margin-left: auto;
+    margin-right: auto; /* Centers the image horizontally */
+}
+
+
+/* ***************************************************************************** */
+/* Bottom section of card******************************************************* */
+/* ***************************************************************************** */
 
 /* New bottom section style */
 .bottom-section {
@@ -110,12 +136,12 @@
     color: aliceblue;
 }
 
-.regular-invoice-one, .regular-invoice-two {
+.regular-invoice-one, .regular-invoice-two, .regular-invoice-three {
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for scaling and shadow */
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); /* Initial state of the shadow */
 }
 
-.regular-invoice-one:hover, .regular-invoice-two:hover {
+.regular-invoice-one:hover, .regular-invoice-two:hover, .regular-invoice-three:hover {
     transform: scale(1.05); /* Slightly increase size on hover */
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5); /* Strong drop shadow on hover */
 }

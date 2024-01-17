@@ -84,27 +84,7 @@
                     </a> 
             </div>
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const messages = ["You are", "doing great!", "Keep it up!", "Go You!", "Right on!"];
-    let currentIndex = 0;
 
-    const textElement = document.getElementById("slidingText");
-    setInterval(() => {
-        // Slide out current message
-        textElement.style.animationName = 'slideOut';
-
-        setTimeout(() => {
-            // Change message after slide out
-            currentIndex = (currentIndex + 1) % messages.length;
-            textElement.textContent = messages[currentIndex];
-
-            // Slide in next message
-            textElement.style.animationName = 'slideIn';
-        }, 1000); // This should match the animation-duration
-    }, 15000); // Change message every 15 seconds
-});
-</script>
 </center>
 <br><br><br>
 {% endblock %}

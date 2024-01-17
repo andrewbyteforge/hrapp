@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Backend.schools.models import School, Employee, EarningsRecord
+from Backend.schools.models import School, Employee, EarningsRecord, Attendance
 from django.http import HttpResponseServerError
 from django.core.paginator import Paginator
 from .forms import YourForm  
@@ -13,6 +13,11 @@ from django.http import JsonResponse
 from collections import defaultdict
 from decimal import Decimal
 from django.shortcuts import redirect
+from datetime import datetime
+from django.db.models.functions import ExtractMonth
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
+
 
 import logging
 logger = logging.getLogger('logging_app')
@@ -289,6 +294,133 @@ def employee_analytics(request):
 def data(request):
     
     return render(request, 'data.html')
+
+
+
+def client_attendance(request):
+    current_year = datetime.now().year
+    years = range(2017, current_year + 1)
+    schools = School.objects.all()
+    months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    return render(request, 'client_attendance.html', {'schools': schools, 'years': years, 'months': months})
+
+
+
+
+
+def attendance_data(request):
+    school_id = request.GET.get('school_id')
+    year = request.GET.get('year')
+    data = Attendance.objects.filter(
+        school_id=school_id, 
+        month__year=year
+    ).annotate(
+        month_label=ExtractMonth('month')  # Extract the month number
+    ).values(
+        'month_label', 'attendance_percentage'
+    )
+    return JsonResponse(list(data), safe=False)
+
+
+
+
+def add_attendance(request):
+    current_year = datetime.now().year
+    schools = School.objects.all()
+    years = range(2017, current_year + 1)  # Creates a range from 2017 to the current year
+    return render(request, 'add_attendance.html', {'schools': schools, 'years': years})
+
+
+
+
+
+
+
+from datetime import datetime
+from django.http import HttpResponse
+
+@csrf_exempt
+def submit_attendance(request):
+    if request.method == 'POST':
+        school_id = request.POST.get('school')
+        year = request.POST.get('year')
+        month_value = request.POST.get('month')
+        attendance_percentage = float(request.POST.get('attendance_percentage'))
+
+        # Construct a valid date string (YYYY-MM-DD format)
+        date_str = f"{year}-{month_value}-01"
+
+        try:
+            school = get_object_or_404(School, id=school_id)
+            month = datetime.strptime(date_str, '%Y-%m-%d').date()
+
+            # Try to get an existing attendance record
+            attendance_record, created = Attendance.objects.get_or_create(
+                school=school,
+                month=month,
+                defaults={'attendance_percentage': attendance_percentage}
+            )
+
+            if not created:
+                # Update the existing record with the new attendance percentage
+                attendance_record.attendance_percentage = attendance_percentage
+                attendance_record.save()
+
+            return redirect('client_attendance')
+        
+        except (ValueError, TypeError):
+            return HttpResponse("Invalid attendance percentage format", status=400)
+    return redirect('add_attendance')
+
+
+
+def delete_database(request):
+    # Delete all records from the AttendanceData model
+    Attendance.objects.all().delete()
+    return redirect('data')  # Redirect to a suitable URL after deletion
+
+
+from django.db.models.functions import ExtractMonth
+
+def get_data_for_year(year):
+    # Query the Attendance model for the specified year
+    attendance_data = Attendance.objects.filter(
+        month__year=year
+    ).annotate(
+        month_label=ExtractMonth('month')  # Extract the month number
+    ).order_by('month_label').values(
+        'month_label', 'attendance_percentage'
+    )
+
+    # Initialize a list with 12 zeros for each month
+    monthly_data = [0] * 12
+
+    for attendance in attendance_data:
+        # Use the 'month_label' from each attendance record
+        month_index = attendance['month_label'] - 1  # Adjust for list indexing
+        monthly_data[month_index] = attendance['attendance_percentage']
+
+    return monthly_data
+
+
+
+def comparison_year(request):
+    year = request.GET.get('year')
+    print(f"Received year: {year}")  # Logging the received year
+
+    if year:
+        data_for_year = get_data_for_year(year)
+        print(f"Data for year {year}: {data_for_year}")  # Logging the data
+
+        formatted_data = {
+            'labels': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            'values': data_for_year
+        }
+
+        return JsonResponse({'data': formatted_data})
+    else:
+        return JsonResponse({'error': 'No year provided'}, status=400)
+
 
 
 

@@ -1,0 +1,5 @@
+.hover-effect:hover {
+    background-color: #f8f9fa; /* Light grey background */
+    transform: scale(1.1); /* Slightly increase size */
+    transition: transform 0.3s ease; /* Smooth transition for the transform */
+}
