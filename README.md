@@ -29,6 +29,7 @@ Clicking add school and filling out the appropriate details creates a school and
 <b>Stats: </b>
 <br>
 Choose the appropriate school / client. This will be reflective of what work the employee has completed with the school. / client. A graph will show the relevant data.
+Compare school stats and years against each other to measure performance
 <br>
 <br>
 <b>Email: </b>
