@@ -59,8 +59,6 @@ Assign employee school
 Input work completed by employee
 
 See graph in stats for employee and school / client
-
-
 <br>
 <br>
 <br>
@@ -69,7 +67,6 @@ See graph in stats for employee and school / client
 <br>
 <h1><b>Landing Page</b></h1>
 <br>
-
 ![Picture2](https://github.com/andrewbyteforge/hrapp/assets/155364089/1c164316-7d3b-4179-b34f-557def6d427f)
 <br>
 <br>
@@ -77,44 +74,35 @@ See graph in stats for employee and school / client
 <br>
 <h1><b>Landing Page </b></h1>
 <br>
-
 ![Screenshot 2024-01-04 at 17-34-34 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/4a5d0649-3e6c-460d-9f5b-5692a04d71a0)
-
-
 <br>
 <br>
 <h1><b>Client Graph</b></h1>
 <br>
-
 ![Screenshot 2024-01-04 at 17-35-49 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/43f60b76-da02-4593-b584-ed76326bcaa4)
-
-
 <br>
 <br>
 <h1><b>Employee Graph</b></h1>
 <br>
-
 ![Screenshot 2024-01-04 at 17-32-52 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/d7e7c26e-5aaf-4edb-b98d-95eac7c282e9)
-
-
-
 <br>
 <br>
 <h1><b>Stats Selection</b></h1>
 <br>
-
-
 ![Screenshot 2024-01-04 at 17-33-36 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/d82c22dc-2659-4316-8afb-b70c7315631e)
-
-
-
-
-
-
 <br>
 <hr>
 <br>
-
+![Screenshot 2024-01-17 at 20-21-07 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/b8f81352-c9da-4b30-ac80-e294b3960b19)
+<br>
+<hr>
+<br>
+![Screenshot 2024-01-17 at 20-20-24 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/7a6ab821-af48-422d-ae8c-a19fac6926e8)
+<br>
+<hr>
+<br>
+![Screenshot 2024-01-17 at 20-19-12 Invoice Schools](https://github.com/andrewbyteforge/hrapp/assets/155364089/bc180803-b29d-417c-a08e-7cb088ba9db0)
+<br>
+<hr>
+<br>
 <h4>Project under development</h4>
-
-
